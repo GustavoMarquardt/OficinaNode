@@ -1,9 +1,6 @@
-// Database.js
+const mysql = require("mysql2/promise");
 
 async function connect() {
-    if (global.connection && global.connection.state !== 'disconnected')
-        return global.connection;
-
     const mysql = require("mysql2/promise");
     const usuario = "root";
     const senha = "";

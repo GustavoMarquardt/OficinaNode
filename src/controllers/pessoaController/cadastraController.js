@@ -6,9 +6,9 @@ async function cadastraPessoa(req, res, next) {
     try {
         // pegar a conexão com o banco de dados
         connection = await database.connect();
-        // criar uma query
-        const sql = "INSERT INTO pessoa(nome, idade, carroId) VALUES (?,?,?)";
-        await connection.query(sql, [req.body.nome, req.body.idade, req.body.carroId]);
+        const sql = "INSERT INTO pessoa(nome, idade) VALUES (?, ?)";
+        const values = [req.body.nome, req.body.idade];
+        await connection.query(sql,values);
         res.status(200).send({
             "status": "200",
             "mensagem": "Pessoa cadastrada com sucesso!"
